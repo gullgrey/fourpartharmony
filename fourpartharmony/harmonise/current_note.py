@@ -85,6 +85,14 @@ class CurrentNote:
         self.bass = None
         self.chord = None
 
+    def print_notes(self):
+        print('Chord: ' + str(self.chord.value) + str(self.bass.inversion()))
+        print('Soprano: ' + str(self.soprano))
+        print('Alto: ' + str(self.alto.value))
+        print('Tenor: ' + str(self.tenor.value))
+        print('Bass: ' + str(self.bass.value))
+        print('\n')
+
 
 class FirstNote(CurrentNote):
 

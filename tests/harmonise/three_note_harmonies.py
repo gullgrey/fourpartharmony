@@ -12,7 +12,7 @@ for first_note in soprano_range:
             soprano_list = [first_note, second_note, third_note]
             # key = randint(0, 6)
             key = 0
-            minor = True
+            minor = False
 
             # soprano_list1 = [10,9,8,8,6,5,4]
             # key = 4
