@@ -177,9 +177,12 @@ class AltoNote:
             if note < self.prev_tenor or note > self.prev_soprano:
                 return False
 
-            if (abs_prev_alto == self.melody.leading_note
-                    and abs_note != self.melody.tonic):
-                return False
+            if abs_prev_alto == self.melody.leading_note:
+                non_tonic_chords = ['V', 'III', 'II']
+                if (self.chord not in non_tonic_chords
+                        # and self.soprano - self.prev_alto < Interval.octave
+                        and abs_note != self.melody.tonic):
+                    return False
 
             if (abs_prev_alto == self.melody.submediant
                     and abs_note == self.melody.leading_note):

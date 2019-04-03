@@ -202,9 +202,11 @@ class TenorNote:
             if note < self.prev_bass or note >= self.prev_alto:
                 return False
 
-            if (abs_prev_tenor == self.melody.leading_note
-                    and abs_note != self.melody.tonic):
-                return False
+            if abs_prev_tenor == self.melody.leading_note:
+                non_tonic_chords = ['V', 'III', 'II']
+                if (self.chord not in non_tonic_chords
+                        and abs_note != self.melody.tonic):
+                    return False
 
             if (abs_prev_tenor == self.melody.submediant
                     and abs_note == self.melody.leading_note):

@@ -208,3 +208,15 @@ class Interval:
 
         else:
             return False
+
+    @staticmethod
+    def note_letter(note):
+
+        abs_note = note % Interval.octave
+        if abs_note > Interval.fifth:
+            letter_value = 60
+        else:
+            letter_value = 67
+
+        return chr(letter_value + abs_note)
+

@@ -1,7 +1,8 @@
 from harmony import Harmony
 from melody import Melody
 
-soprano_list1 = [0, 6, 0]
+# soprano_list1 = [0,0,4,4,4,5,4,3,3,2,2,1,1,0]
+soprano_list1 = [6, 6, 6]
 key = 0
 minor = False
 

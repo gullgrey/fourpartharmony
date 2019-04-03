@@ -146,6 +146,11 @@ class Chord:
         shuffle(first_priority)
         self.nodes += first_priority
 
+        abs_soprano = self.soprano % Interval.octave
+        abs_prev_soprano = self.prev_soprano % Interval.octave
+        if abs_prev_soprano == abs_soprano == self.melody.leading_note:
+            self.nodes.append('V')
+
     def _subdominant_progression(self):
 
         # Checks if previous chord is IVc then sets nodes to contain just chord I.
@@ -185,7 +190,8 @@ class Chord:
         else:
             self.nodes.append('I')
 
-        third_priority = ['V', 'III', 'IV']
+        self.nodes.append('IV')
+        third_priority = ['V', 'III', 'II']
         self.nodes += third_priority
 
     def _submediant_progression(self):

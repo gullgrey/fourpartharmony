@@ -11,12 +11,12 @@ for note in range(0, melody_length):
 key = randint(0, 6)
 minor = False
 
-soprano_list1 = [0,0,4,4,-4,5,4,3,3,2,2,1,1,0]
-key = 4
-note_counter = 0
-for note in soprano_list1:
-    soprano_list1[note_counter] += key
-    note_counter += 1
+# soprano_list1 = [0,0,4,4,4,5,4,3,3,2,2,1,1,0]
+# key = 4
+# note_counter = 0
+# for note in soprano_list1:
+#     soprano_list1[note_counter] += key
+#     note_counter += 1
 
 melody1 = Melody(soprano_list1, (key, minor))
 

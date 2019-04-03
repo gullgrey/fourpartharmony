@@ -86,11 +86,11 @@ class CurrentNote:
         self.chord = None
 
     def print_notes(self):
-        print('Chord: ' + str(self.chord.value) + str(self.bass.inversion()))
-        print('Soprano: ' + str(self.soprano))
-        print('Alto: ' + str(self.alto.value))
-        print('Tenor: ' + str(self.tenor.value))
-        print('Bass: ' + str(self.bass.value))
+        print('Chord:' + str(self.chord.value) + str(self.bass.inversion()))
+        print('Soprano:', self.soprano, '|', Interval.note_letter(self.soprano))
+        print('Alto:', self.alto.value, '|', Interval.note_letter(self.alto.value))
+        print('Tenor:', self.tenor.value, '|', Interval.note_letter(self.tenor.value))
+        print('Bass:', self.bass.value, '|', Interval.note_letter(self.bass.value))
         print('\n')
 
 

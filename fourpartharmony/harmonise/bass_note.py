@@ -57,7 +57,7 @@ class BassNote:
 
     def _first_bass_note(self):
 
-        # This randomly selects between shifting down 1 or two octaves, and makes sure shit is still in bass range.
+        # This randomly selects between shifting down 1 or two octaves, and makes sure shift is still in bass range.
         octave_shift = -7
         two_octave_shift = -14
 

@@ -75,6 +75,7 @@ class Harmony:
                 self._next_tenor()
                 continue
 
+            # print(self.current_note.soprano)
             # self.current_note.print_notes()
 
             self.harmonised_notes.append(self.current_note)

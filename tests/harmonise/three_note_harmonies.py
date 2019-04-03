@@ -14,9 +14,6 @@ for first_note in soprano_range:
             key = 0
             minor = False
 
-            # soprano_list1 = [10,9,8,8,6,5,4]
-            # key = 4
-
             melody1 = Melody(soprano_list, (key, minor))
 
             try:
