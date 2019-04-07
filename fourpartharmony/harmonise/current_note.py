@@ -11,6 +11,8 @@ class CurrentNote:
             self.soprano = self.melody.next_note()
             self.prev_soprano = self.melody.prev_soprano
 
+        self.future_soprano = self.melody.future_soprano
+
         self.alto = None
         self.tenor = None
         self.bass = None

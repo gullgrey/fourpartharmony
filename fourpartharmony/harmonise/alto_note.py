@@ -14,6 +14,7 @@ class AltoNote:
 
         self.soprano = current_note.soprano
         self.prev_soprano = current_note.prev_soprano
+        self.future_soprano = current_note.future_soprano
 
         self.chord = current_note.chord.value
         self.prev_chord = None
@@ -110,9 +111,12 @@ class AltoNote:
                     self.potential_degrees.remove(abs_bass)
 
         # This allows jumps of a seventh to be more readily harmonised by allowing the
-        # doubling of the soprano note no matter what.
+        # doubling of the soprano degree no matter what.
         if (self.is_first_note is False
                 and self.soprano - self.prev_soprano == Interval.seventh):
+            self.potential_degrees.append(abs_soprano)
+        elif (self.future_soprano is not None
+                and self.soprano - self.future_soprano == Interval.seventh):
             self.potential_degrees.append(abs_soprano)
 
     def _first_alto_note(self):
@@ -169,6 +173,11 @@ class AltoNote:
 
         if (self.soprano - note > Interval.octave
                 or note - self.tenor > Interval.octave):
+            return False
+
+        if (self.future_soprano is not None
+                and note > self.future_soprano
+                and self.soprano - self.future_soprano <= Interval.octave):
             return False
 
         if self.is_first_note is False:

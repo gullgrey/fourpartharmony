@@ -66,7 +66,8 @@ class Chord:
         second_priority = ['V', 'V7']
         shuffle(second_priority)
         self.nodes += second_priority
-        self.nodes.append('IV')
+        third_priority = ['IV', 'II']
+        self.nodes += third_priority
 
     def new_chord(self):
         roman = self.prev_chord

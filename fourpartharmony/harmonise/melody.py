@@ -49,6 +49,7 @@ class Melody:
         self.current_position = -1
         self.current_soprano = None
         self.prev_soprano = None
+        self.future_soprano = None
         self.is_penultimate_note = False
         self.is_final_note = False
 
@@ -99,6 +100,11 @@ class Melody:
 
         self._set_final_note_checks()
 
+        if self.is_final_note is False:
+            self.future_soprano = self.soprano_list[self.current_position + 1]
+        else:
+            self.future_soprano = None
+
         return self.current_soprano
 
     def prev_note(self):
@@ -113,6 +119,11 @@ class Melody:
             self.prev_soprano = self.soprano_list[self.current_position - 1]
 
         self._set_final_note_checks()
+
+        if self.is_final_note is False:
+            self.future_soprano = self.soprano_list[self.current_position + 1]
+        else:
+            self.future_soprano = None
 
         return self.current_soprano
 
@@ -188,6 +199,9 @@ class Interval:
         :return: True if consecutive fifth or octave is found. False if not.
         """
         if prev_higher is None or prev_lower is None:
+            return False
+
+        if prev_higher == higher and prev_lower == lower:
             return False
 
         prev_interval = (prev_higher - prev_lower) % Interval.octave

@@ -65,9 +65,9 @@ class BassNote:
         dominant_chord = False
         while triad_note <= 1 and dominant_chord is False:
             note = self.chord_notes[self.chord][triad_note]
-            self.nodes.append(note + octave_shift)
             if note + two_octave_shift >= self.melody.bass_lower:
                 self.nodes.append(note + two_octave_shift)
+            self.nodes.append(note + octave_shift)
             dominant_chord = self.chord in ['V', 'V7']
             triad_note += 1
 
