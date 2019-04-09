@@ -156,7 +156,8 @@ class TenorNote:
         # print('Bass: '+str(self.bass))
         # print('Potential Degrees: '+str(self.potential_degrees))
         self.potential_degrees.remove(abs_bass)
-        self.potential_degrees.remove(abs_soprano)
+        if abs_soprano in self.potential_degrees:
+            self.potential_degrees.remove(abs_soprano)
 
     def _first_tenor_note(self):
 

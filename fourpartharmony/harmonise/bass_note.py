@@ -23,6 +23,8 @@ class BassNote:
 
         self.prev_tenor = None
 
+        self.lenient_rules = current_note.lenient_rules
+
         self.cadence_nodes_empty = current_note.chord.cadence_nodes_empty
         # self.is_penultimate_note = current_note.is_penultimate_note
         # self.is_final_note = current_note.is_final_note
@@ -62,10 +64,18 @@ class BassNote:
         two_octave_shift = -14
 
         triad_note = 0
+
+        # if self.lenient_rules:
+        #     note = self.chord_notes[self.chord][triad_note]
+        #     if self.melody.in_bass_range(note + two_octave_shift):
+        #         self.nodes.append(note + two_octave_shift)
+        #     self.nodes.append(note + octave_shift)
+        #     triad_note += 1
+
         dominant_chord = False
         while triad_note <= 1 and dominant_chord is False:
             note = self.chord_notes[self.chord][triad_note]
-            if note + two_octave_shift >= self.melody.bass_lower:
+            if self.melody.in_bass_range(note + two_octave_shift):
                 self.nodes.append(note + two_octave_shift)
             self.nodes.append(note + octave_shift)
             dominant_chord = self.chord in ['V', 'V7']
@@ -121,7 +131,8 @@ class BassNote:
         # This ensures the 3rd note of chord 'V' (the leading note of the melody) is never doubled.
         elif (self.chord == 'V'
                 and abs_note == second_triad_note
-                and abs_soprano == second_triad_note):
+                and abs_soprano == second_triad_note
+                and self.lenient_rules is False):
             return False
 
         # This removes any notes not in the chosen chord.

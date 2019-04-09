@@ -30,6 +30,8 @@ class AltoNote:
 
         self.potential_degrees = list(current_note.tenor.potential_degrees)
 
+        self.lenient_rules = current_note.lenient_rules
+
         self.nodes = []
         self.value = None
 
@@ -110,13 +112,20 @@ class AltoNote:
                 if abs_bass in self.potential_degrees:
                     self.potential_degrees.remove(abs_bass)
 
+        if self.lenient_rules:
+            self._lenient_alto_rules(abs_soprano)
+
+    def _lenient_alto_rules(self, abs_soprano):
+
         # This allows jumps of a seventh to be more readily harmonised by allowing the
         # doubling of the soprano degree no matter what.
         if (self.is_first_note is False
-                and self.soprano - self.prev_soprano == Interval.seventh):
+                and self.soprano - self.prev_soprano
+                in [Interval.seventh, Interval.octave]):
             self.potential_degrees.append(abs_soprano)
         elif (self.future_soprano is not None
-                and self.soprano - self.future_soprano == Interval.seventh):
+              and self.soprano - self.future_soprano
+              in [Interval.seventh, Interval.octave]):
             self.potential_degrees.append(abs_soprano)
 
     def _first_alto_note(self):

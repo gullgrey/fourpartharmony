@@ -12,7 +12,7 @@ for first_note in soprano_range:
             soprano_list = [first_note, second_note, third_note]
             # key = randint(0, 6)
             key = 0
-            minor = False
+            minor = True
 
             melody1 = Melody(soprano_list, (key, minor))
 
