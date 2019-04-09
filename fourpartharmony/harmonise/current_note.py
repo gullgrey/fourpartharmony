@@ -31,6 +31,8 @@ class CurrentNote:
         self.prev_prev_chord = None
         self.prev_prev_bass = None
 
+        self.lenient_rules = False
+
         self._previous_note_vales(prev_note)
 
     def _previous_note_vales(self, prev_note):

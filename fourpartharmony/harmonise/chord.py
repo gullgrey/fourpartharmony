@@ -18,6 +18,7 @@ class Chord:
         self.is_final_note = current_note.is_final_note
 
         self._third_apart = False
+        self.lenient_rules = current_note.lenient_rules
 
         # Keeps track of number of chords removed from nodes.
         # Used for final cadences.
@@ -192,8 +193,9 @@ class Chord:
             self.nodes.append('I')
 
         self.nodes.append('IV')
-        third_priority = ['V', 'III', 'II']
-        self.nodes += third_priority
+        if self.lenient_rules:
+            third_priority = ['V', 'III', 'II']
+            self.nodes += third_priority
 
     def _submediant_progression(self):
 

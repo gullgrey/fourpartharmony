@@ -43,7 +43,14 @@ class Harmony:
                 self.current_note.chord = self.current_chord
 
             if self.current_chord.value is None:
-                self._prev_next_chord()
+
+                if self.current_note.lenient_rules is False:
+
+                    self.current_note.lenient_rules = True
+                    self.current_note.clear_notes()
+                    self.current_chord = None
+                else:
+                    self._prev_next_tenor()
                 continue
 
             # print('Chord: ', self.current_chord.nodes, self.melody.current_position)
@@ -108,7 +115,7 @@ class Harmony:
         self.current_alto = None
         self.current_tenor.next_node()
 
-    def _prev_next_chord(self):
+    def _prev_next_tenor(self):
 
         self.melody.prev_note()
 
