@@ -178,7 +178,8 @@ class Chord:
         if self.is_second_note:
             self.nodes.append('IV')
         elif self._third_apart:
-            self.nodes.insert(0, 'IV')
+            new_position = 2
+            self.nodes.insert(new_position, 'IV')
         else:
             self.nodes.append('IV')
 

@@ -1,4 +1,5 @@
 from random import shuffle
+from statistics import mean
 
 from harmonise_exceptions import EmptyNodeError
 from melody import Interval
@@ -23,6 +24,8 @@ class TenorNote:
         self.prev_alto = None
 
         self.is_first_note = current_note.is_first_note
+
+        self.lenient_rules = current_note.lenient_rules
 
         self.potential_degrees = []
 
@@ -161,9 +164,19 @@ class TenorNote:
 
     def _first_tenor_note(self):
 
-        first_nodes = list(range(self.melody.tenor_lower, self.melody.tenor_upper + 1))
-        self.nodes += first_nodes
-        shuffle(self.nodes)
+        tenor_bounds = [self.melody.tenor_lower, self.melody.tenor_upper]
+        mid_point = int(mean(tenor_bounds))
+
+        first_nodes = list(range(mid_point, self.melody.tenor_upper + 1))
+        second_nodes = list(range(self.melody.tenor_lower, mid_point))
+        shuffle(first_nodes)
+        shuffle(second_nodes)
+        if self.soprano > self.melody.tenor_upper:
+            self.nodes += first_nodes
+            self.nodes += second_nodes
+        else:
+            self.nodes += second_nodes
+            self.nodes += first_nodes
 
         self.nodes[:] = [note for note in self.nodes if self._note_is_valid(note)]
 
@@ -205,6 +218,7 @@ class TenorNote:
 
             if abs_prev_tenor == self.melody.leading_note:
                 non_tonic_chords = ['V', 'III', 'II']
+                # if (self.lenient_rules is False
                 if (self.chord not in non_tonic_chords
                         and abs_note != self.melody.tonic):
                     return False

@@ -25,6 +25,7 @@ class BassNote:
 
         self.lenient_rules = current_note.lenient_rules
 
+        self.is_final_note = current_note.is_final_note
         self.cadence_nodes_empty = current_note.chord.cadence_nodes_empty
         # self.is_penultimate_note = current_note.is_penultimate_note
         # self.is_final_note = current_note.is_final_note
@@ -49,7 +50,8 @@ class BassNote:
 
         if current_note.is_first_note:
             self._first_bass_note()
-        elif self.cadence_nodes_empty is False:
+        elif (self.is_final_note
+                and self.cadence_nodes_empty is False):
             self._final_bass_cadence()
         else:
             self._new_bass_note()
@@ -97,7 +99,9 @@ class BassNote:
             if bass_interval == Interval.fifth:
                 self.nodes.append(self.prev_bass)
 
-        if abs_prev_bass == self.melody.leading_note:
+        if (abs_prev_bass == self.melody.leading_note
+                # and self.lenient_rules is False):
+                and self.chord != 'V'):
             self.nodes.clear()
             self.nodes.append(self.prev_bass + 1)
 

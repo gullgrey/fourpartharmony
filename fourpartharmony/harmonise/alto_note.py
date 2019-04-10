@@ -1,4 +1,3 @@
-from random import shuffle
 from statistics import mean
 
 from harmonise_exceptions import EmptyNodeError
@@ -31,6 +30,7 @@ class AltoNote:
         self.potential_degrees = list(current_note.tenor.potential_degrees)
 
         self.lenient_rules = current_note.lenient_rules
+        self.soprano_within_octave = True
 
         self.nodes = []
         self.value = None
@@ -123,10 +123,19 @@ class AltoNote:
                 and self.soprano - self.prev_soprano
                 in [Interval.seventh, Interval.octave]):
             self.potential_degrees.append(abs_soprano)
+            # if self.soprano - self.prev_soprano == Interval.octave:
+            #     self.soprano -= Interval.octave
         elif (self.future_soprano is not None
               and self.soprano - self.future_soprano
               in [Interval.seventh, Interval.octave]):
             self.potential_degrees.append(abs_soprano)
+            # if self.soprano - self.future_soprano == Interval.octave:
+            #     self.soprano -= Interval.octave
+
+        if self.is_first_note is False:
+            if (self.prev_soprano - self.prev_alto == Interval.octave
+                    and self.soprano > self.prev_soprano):
+                self.soprano_within_octave = False
 
     def _first_alto_note(self):
 
@@ -143,6 +152,8 @@ class AltoNote:
             interval_counter += 1
 
         self.nodes[:] = [note for note in self.nodes if self._note_is_valid(note)]
+
+        self._consecutive_priority()
 
     def _new_alto_note(self):
 
@@ -170,6 +181,8 @@ class AltoNote:
 
         self.nodes[:] = [note for note in self.nodes if self._note_is_valid(note)]
 
+        self._consecutive_priority()
+
     def _note_is_valid(self, note):
 
         abs_note = note % Interval.octave
@@ -181,7 +194,9 @@ class AltoNote:
             return False
 
         if (self.soprano - note > Interval.octave
-                or note - self.tenor > Interval.octave):
+                and self.soprano_within_octave):
+            return False
+        if note - self.tenor > Interval.octave:
             return False
 
         if (self.future_soprano is not None
@@ -197,6 +212,7 @@ class AltoNote:
 
             if abs_prev_alto == self.melody.leading_note:
                 non_tonic_chords = ['V', 'III', 'II']
+                # if (self.lenient_rules is False
                 if (self.chord not in non_tonic_chords
                         # and self.soprano - self.prev_alto < Interval.octave
                         and abs_note != self.melody.tonic):
@@ -206,7 +222,8 @@ class AltoNote:
                     and abs_note == self.melody.leading_note):
                 return False
 
-        if Interval.invalid_consecutives(self.prev_soprano, self.prev_alto, self.soprano, note):
+        if (Interval.invalid_consecutives(self.prev_soprano, self.prev_alto, self.soprano, note)
+                and self.lenient_rules is False):
             return False
         elif Interval.invalid_consecutives(self.prev_alto, self.prev_tenor, note, self.tenor):
             return False
@@ -217,6 +234,14 @@ class AltoNote:
             return False
         else:
             return True
+
+    def _consecutive_priority(self):
+
+        if self.lenient_rules:
+            for note in self.nodes:
+                if Interval.invalid_consecutives(self.prev_soprano, self.prev_alto, self.soprano, note):
+                    self.nodes.remove(note)
+                    self.nodes.append(note)
 
     def next_node(self):
 
