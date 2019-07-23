@@ -139,6 +139,15 @@ class Melody:
         else:
             self.is_final_note = False
 
+    def reset_position(self):
+
+        self.current_position = -1
+        self.current_soprano = None
+        self.prev_soprano = None
+        self.future_soprano = None
+        self.is_penultimate_note = False
+        self.is_final_note = False
+
     def _in_range(self, note_int, voice):
 
         if voice == 'soprano':

@@ -1,10 +1,10 @@
 from harmony import Harmony
 from melody import Melody
 
-# soprano_list1 = [0,0,4,4,4,5,4,3,3,2,2,1,1,0]
-soprano_list1 = [8,2,2]
-key = 2
-minor = True
+soprano_list1 = [0,0,4,4,4,5,4,3,3,2,2,1,1,0]
+# soprano_list1 = [11,7,11]
+key = 5
+minor = False
 
 melody1 = Melody(soprano_list1, (key, minor))
 

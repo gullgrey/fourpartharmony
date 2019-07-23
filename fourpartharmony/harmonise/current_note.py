@@ -12,6 +12,7 @@ class CurrentNote:
             self.prev_soprano = self.melody.prev_soprano
 
         self.future_soprano = self.melody.future_soprano
+        self.actual_soprano = self.soprano
 
         self.alto = None
         self.tenor = None
@@ -89,9 +90,31 @@ class CurrentNote:
         self.bass = None
         self.chord = None
 
+    def normalise_soprano(self):
+        self.soprano = self.soprano % Interval.octave
+        if self.future_soprano is not None:
+            self.future_soprano = self.future_soprano % Interval.octave
+        if self.prev_soprano is not None:
+            self.prev_soprano = self.prev_soprano % Interval.octave
+
+    def start_new_progression(self):
+
+        self.is_first_note = True
+        self.is_second_note = False
+
+        self.prev_chord = None
+        self.prev_bass = None
+        self.prev_tenor = None
+        self.prev_alto = None
+
+        self.prev_prev_chord = None
+        self.prev_prev_bass = None
+
+        self.lenient_rules = False
+
     def print_notes(self):
         print('Chord:' + str(self.chord.value) + str(self.bass.inversion()))
-        print('Soprano:', self.soprano, '|', Interval.note_letter(self.soprano))
+        print('Soprano:', self.actual_soprano, '|', Interval.note_letter(self.actual_soprano))
         print('Alto:', self.alto.value, '|', Interval.note_letter(self.alto.value))
         print('Tenor:', self.tenor.value, '|', Interval.note_letter(self.tenor.value))
         print('Bass:', self.bass.value, '|', Interval.note_letter(self.bass.value))

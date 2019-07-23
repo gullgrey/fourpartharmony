@@ -5,15 +5,15 @@ from harmony import Harmony
 from melody import Melody
 
 failed_attempts = 0
-melody_length = 3
-for x in range(100):
+melody_length = 7
+for x in range(30):
 
     soprano_list1 = []
     for note in range(0, melody_length):
         soprano_list1.append(randrange(0, 12))
 
     key = randint(0, 6)
-    minor = False
+    minor = True
 
     # soprano_list1 = [10,9,8,8,6,5,4]
     # key = 4

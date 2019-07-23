@@ -28,7 +28,8 @@ class Harmony:
         # check melody is "new"?
 
         furthest_note = 0
-        max_prev_notes = 6
+        max_prev_notes = 5
+        new_progression_notes = []
 
         final_note_harmonised = False
         while final_note_harmonised is False:
@@ -37,6 +38,12 @@ class Harmony:
                     self.current_note = FirstNote(self.melody)
                 else:
                     self.current_note = CurrentNote(self.prev_note)
+                if self.melody.current_position > furthest_note:
+                    furthest_note = self.melody.current_position
+                    # normalise_soprano = False
+                    # self.current_note.lenient_rules = False
+                if self.melody.current_position in new_progression_notes:
+                    self.current_note.start_new_progression()
 
             if self.current_chord is None:
                 self.current_chord = Chord(self.current_note)
@@ -49,6 +56,12 @@ class Harmony:
                     self.current_note.lenient_rules = True
                     self.current_note.clear_notes()
                     self.current_chord = None
+
+                elif self.melody.current_position == 0:
+                    new_progression_notes.append(furthest_note)
+                    furthest_note = 0
+                    self._restart_harmony()
+
                 else:
                     self._prev_next_tenor()
                 continue
@@ -87,15 +100,14 @@ class Harmony:
 
             self.harmonised_notes.append(self.current_note)
             self.prev_note = self.current_note
-            self.current_note = None
-            self.current_chord = None
-            self.current_bass = None
-            self.current_tenor = None
-            self.current_alto = None
+            self._clear_note()
 
-            furthest_note = max(furthest_note, self.melody.current_position)
             if (furthest_note - self.melody.current_position) > max_prev_notes:
-                raise HarmonisationError('Unable to harmonise current melody.')
+                new_progression_notes.append(furthest_note)
+                furthest_note = 0
+                self._restart_harmony()
+
+                # raise HarmonisationError('Unable to harmonise current melody.')
 
             if self.melody.is_final_note:
                 final_note_harmonised = True
@@ -126,6 +138,21 @@ class Harmony:
         self.current_alto = None
 
         self.current_tenor.next_node()
+
+    def _clear_note(self):
+
+        self.current_note = None
+        self.current_chord = None
+        self.current_bass = None
+        self.current_tenor = None
+        self.current_alto = None
+
+    def _restart_harmony(self):
+
+        self.melody.reset_position()
+        self.harmonised_notes.clear()
+        self.prev_note = None
+        self._clear_note()
 
     def print_notes(self):
 

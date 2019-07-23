@@ -6,7 +6,7 @@ from melody import Melody
 melody_length = 10
 soprano_list1 = []
 for note in range(0, melody_length):
-    soprano_list1.append(randrange(3, 10))
+    soprano_list1.append(randrange(0, 12))
 
 key = randint(0, 6)
 minor = False

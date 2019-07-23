@@ -123,8 +123,9 @@ class AltoNote:
                 and self.soprano - self.prev_soprano
                 in [Interval.seventh, Interval.octave]):
             self.potential_degrees.append(abs_soprano)
-            # if self.soprano - self.prev_soprano == Interval.octave:
-            #     self.soprano -= Interval.octave
+            if (self.soprano - self.prev_soprano == Interval.octave
+                    and abs_soprano == self.melody.leading_note):
+                self.soprano_within_octave = False
         elif (self.future_soprano is not None
               and self.soprano - self.future_soprano
               in [Interval.seventh, Interval.octave]):
@@ -132,10 +133,10 @@ class AltoNote:
             # if self.soprano - self.future_soprano == Interval.octave:
             #     self.soprano -= Interval.octave
 
-        if self.is_first_note is False:
-            if (self.prev_soprano - self.prev_alto == Interval.octave
-                    and self.soprano > self.prev_soprano):
-                self.soprano_within_octave = False
+        # if self.is_first_note is False:
+        #     if (self.prev_soprano - self.prev_alto == Interval.octave
+        #             and self.soprano > self.prev_soprano):
+        #         self.soprano_within_octave = False
 
     def _first_alto_note(self):
 
