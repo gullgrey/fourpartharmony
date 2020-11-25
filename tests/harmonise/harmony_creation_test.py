@@ -9,7 +9,7 @@ for note in range(0, melody_length):
     soprano_list1.append(randrange(0, 12))
 
 key = randint(0, 6)
-minor = False
+minor = True
 
 # soprano_list1 = [0,0,4,4,4,5,4,3,3,2,2,1,1,0]
 # key = 4

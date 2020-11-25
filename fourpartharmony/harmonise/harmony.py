@@ -52,7 +52,6 @@ class Harmony:
             if self.current_chord.value is None:
 
                 if self.current_note.lenient_rules is False:
-
                     self.current_note.lenient_rules = True
                     self.current_note.clear_notes()
                     self.current_chord = None
