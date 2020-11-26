@@ -87,6 +87,7 @@
           <gateTime>100</gateTime>
           </Articulation>
         <Channel>
+          <controller ctrl="0" value="0"/>
           <controller ctrl="32" value="17"/>
           <program value="52"/>
           <synti>Fluid</synti>
@@ -138,6 +139,7 @@
           <gateTime>100</gateTime>
           </Articulation>
         <Channel>
+          <controller ctrl="0" value="0"/>
           <controller ctrl="32" value="17"/>
           <program value="52"/>
           <synti>Fluid</synti>
@@ -191,6 +193,7 @@
           <gateTime>100</gateTime>
           </Articulation>
         <Channel>
+          <controller ctrl="0" value="0"/>
           <controller ctrl="32" value="17"/>
           <program value="52"/>
           <synti>Fluid</synti>
@@ -244,6 +247,7 @@
           <gateTime>100</gateTime>
           </Articulation>
         <Channel>
+          <controller ctrl="0" value="0"/>
           <controller ctrl="32" value="17"/>
           <program value="52"/>
           <synti>Fluid</synti>
@@ -260,9 +264,89 @@
             <sigN>63</sigN>
             <sigD>64</sigD>
             </TimeSig>
+          <Chord>
+            <dots>1</dots>
+            <durationType>quarter</durationType>
+            <Note>
+              <pitch>70</pitch>
+              <tpc>12</tpc>
+              </Note>
+            </Chord>
           <Rest>
-            <durationType>measure</durationType>
-            <duration>63/64</duration>
+            <dots>1</dots>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
+            </Rest>
+          <Rest>
+            <durationType>32nd</durationType>
+            </Rest>
+          <Rest>
+            <durationType>64th</durationType>
             </Rest>
           </voice>
         </Measure>

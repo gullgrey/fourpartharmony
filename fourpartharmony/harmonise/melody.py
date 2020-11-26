@@ -16,7 +16,7 @@ class Melody:
                 4 --> G
                 5 --> A
                 6 --> B
-            key[1] is a boolean. It represents whether the key is major or minor.
+            key[1] is a boolean. It represents whether the key is major (False) or minor (True).
             **NOTE: Whether the key is sharp, flat or natural is irrelevant to the operation of the harmonisation.
         :param kwargs:
         """
