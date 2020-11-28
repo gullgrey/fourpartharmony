@@ -38,7 +38,9 @@ class MeasureChord(MeasureRest):
     def __init__(self):
 
         super().__init__()
+        self.lyric = None
         self.accidental = None
+
         self.soprano_pitch = None
         self.soprano_tpc = None
 
@@ -46,12 +48,15 @@ class MeasureChord(MeasureRest):
 
         self.alto_pitch = None
         self.alto_tpc = None
+        self.alto_leading_note = False
 
         self.tenor_pitch = None
         self.tenor_tpc = None
+        self.tenor_leading_note = False
 
         self.bass_pitch = None
         self.bass_tpc = None
+        self.bass_leading_note = False
 
 
 

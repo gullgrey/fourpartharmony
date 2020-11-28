@@ -112,8 +112,12 @@ class CurrentNote:
 
         self.lenient_rules = False
 
+    def get_harmonies(self):
+        return [self.chord.value + self.bass.inversion(), self.alto.value,
+                self.tenor.value, self.bass.value]
+
     def print_notes(self):
-        print('Chord:' + str(self.chord.value) + str(self.bass.inversion()))
+        print('Chord: ' + str(self.chord.value) + str(self.bass.inversion()))
         print('Soprano:', self.actual_soprano, '|', Interval.note_letter(self.actual_soprano))
         print('Alto:', self.alto.value, '|', Interval.note_letter(self.alto.value))
         print('Tenor:', self.tenor.value, '|', Interval.note_letter(self.tenor.value))

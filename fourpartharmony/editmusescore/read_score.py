@@ -46,7 +46,10 @@ class ReadScore:
             self.rest_flag = False
 
     def _extract_pitch(self, line):
-        if line.startswith('<subtype>'):
+
+        if line.startswith('<text>'):
+            self.current_note_value.lyric = self._extract_value(line, '<text>', '</text>')
+        elif line.startswith('<subtype>'):
             self.current_note_value.accidental = self._extract_value(line, '<subtype>', '</subtype>')
         elif line.startswith('<pitch>'):
             self.current_note_value.soprano_pitch = self._extract_value(line, '<pitch>', '</pitch>')
