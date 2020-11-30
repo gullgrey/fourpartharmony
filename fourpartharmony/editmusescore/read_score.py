@@ -1,4 +1,3 @@
-from fractions import Fraction
 from measure_chord import MeasureRest, MeasureChord
 
 
@@ -6,11 +5,15 @@ class ReadScore:
 
     def __init__(self, file_name):
 
+        self.file_name = file_name
+
         self.lines = None
         self.tag_values = []
+        self.subtitle = None
         self.anacrusis = None
         self.key_sig = '0'
 
+        self.time_sig_common = None
         self.time_sig_numerator = None
         self.time_sig_denominator = None
 
@@ -23,12 +26,12 @@ class ReadScore:
         self.rest_flag = False
         self.chord_flag = False
 
-        self._create_lines(file_name)
+        self._create_lines()
         self._collect_data()
 
-    def _create_lines(self, file_name):
+    def _create_lines(self):
 
-        file = open(file_name, "r")
+        file = open(self.file_name, "r")
         self.lines = file.read().splitlines()
         file.close()
 
@@ -71,6 +74,7 @@ class ReadScore:
         meta_tag_start = '<metaTag name="{}">'
         meta_tag_end = '</metaTag>'
 
+        subtitle_flag = False
         key_sig_flag = False
         time_sig_flag = False
         staff_flag = False
@@ -84,6 +88,13 @@ class ReadScore:
                     if line.startswith(meta_tag_start.format(name)):
                         tag_value = line[len(meta_tag_start.format(name)):-len(meta_tag_end)]
                         self.tag_values.append(tag_value)
+
+            if line.startswith('<style>Subtitle'):
+                subtitle_flag = True
+
+            if subtitle_flag and line.startswith('<text>'):
+                self.subtitle = self._extract_value(line, '<text>', '</text>')
+                subtitle_flag = False
 
             if line.startswith('<Measure len'):
                 self.anacrusis = self._extract_value(line, '<Measure len="', '">')
@@ -100,7 +111,9 @@ class ReadScore:
                 staff_flag = True
 
             if time_sig_flag:
-                if line.startswith('<sigN>'):
+                if line.startswith('<subtype>'):
+                    self.time_sig_common = self._extract_value(line, '<subtype>', '</subtype>')
+                elif line.startswith('<sigN>'):
                     self.time_sig_numerator = self._extract_value(line, '<sigN>', '</sigN>')
                 elif line.startswith('<sigD>'):
                     self.time_sig_denominator = self._extract_value(line, '<sigD>', '</sigD>')

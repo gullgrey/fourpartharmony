@@ -1,10 +1,11 @@
 from read_score import ReadScore
 from measure_chord import MeasureChord
 
-score = ReadScore("test.mscx")
-# score = ReadScore("four part test 2.mscx")
+# score = ReadScore("test.mscx")
+score = ReadScore("four part test.mscx")
 
 print(score.tag_values)
+print(score.subtitle)
 print(score.anacrusis)
 print(score.key_sig)
 print(score.time_sig_numerator)

@@ -18,7 +18,7 @@
     <showMargins>0</showMargins>
     <metaTag name="arranger">blah</metaTag>
     <metaTag name="composer"></metaTag>
-    <metaTag name="copyright"></metaTag>
+    <metaTag name="copyright">e</metaTag>
     <metaTag name="creationDate">2020-11-22</metaTag>
     <metaTag name="lyricist"></metaTag>
     <metaTag name="movementNumber"></metaTag>

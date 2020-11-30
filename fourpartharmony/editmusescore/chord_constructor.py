@@ -54,6 +54,11 @@ class ChordConstructor:
         # finds where the position of the note is on the current key's scale
         tpc_position = (abs_note - self.natural_key) % NoteConversions.scale_length
 
+        leading_note = False
+        leading_note_position = 6
+        if self.is_minor and tpc_position == leading_note_position:
+            leading_note = True
+
         # the actual tpc value of the note.
         tpc = self.tpc_scale[tpc_position]
 
@@ -75,7 +80,7 @@ class ChordConstructor:
                 pitch_adjust += 1
         pitch = natural_pitch + pitch_adjust
 
-        return [pitch, tpc]
+        return [str(pitch), str(tpc), leading_note]
 
     def _construct_chords(self):
 
@@ -88,19 +93,19 @@ class ChordConstructor:
             alto_values = self._pitch_tpc_values(1)
             self.current_mc.alto_pitch = alto_values[0]
             self.current_mc.alto_tpc = alto_values[1]
+            self.current_mc.alto_leading_note = alto_values[2]
 
             tenor_values = self._pitch_tpc_values(2)
             self.current_mc.tenor_pitch = tenor_values[0]
             self.current_mc.tenor_tpc = tenor_values[1]
+            self.current_mc.tenor_leading_note = alto_values[2]
 
             bass_values = self._pitch_tpc_values(3)
             self.current_mc.bass_pitch = bass_values[0]
             self.current_mc.bass_tpc = bass_values[1]
+            self.current_mc.bass_leading_note = alto_values[2]
 
             print(self.current_mc.chord)
             print(alto_values)
             print(tenor_values)
             print(bass_values)
-
-            # self._set_tenor_pitch()
-            # self._set_bass_pitch()

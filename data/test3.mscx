@@ -17,10 +17,10 @@
     <showFrames>1</showFrames>
     <showMargins>0</showMargins>
     <metaTag name="arranger"></metaTag>
-    <metaTag name="composer">g</metaTag>
-    <metaTag name="copyright">g</metaTag>
-    <metaTag name="creationDate">2020-11-26</metaTag>
-    <metaTag name="lyricist">g</metaTag>
+    <metaTag name="composer"></metaTag>
+    <metaTag name="copyright"></metaTag>
+    <metaTag name="creationDate">2020-11-30</metaTag>
+    <metaTag name="lyricist"></metaTag>
     <metaTag name="movementNumber"></metaTag>
     <metaTag name="movementTitle"></metaTag>
     <metaTag name="platform">Microsoft Windows</metaTag>
@@ -92,36 +92,19 @@
         </Instrument>
       </Part>
     <Staff id="1">
-      <VBox>
-        <height>10</height>
-        <Text>
-          <style>Composer</style>
-          <text>g</text>
-          </Text>
-        <Text>
-          <style>Lyricist</style>
-          <text>g</text>
-          </Text>
-        </VBox>
-      <Measure len="11/8">
-        <irregular>1</irregular>
+      <Measure>
         <voice>
           <KeySig>
-            <accidental>-7</accidental>
+            <accidental>-3</accidental>
             </KeySig>
           <TimeSig>
-            <subtype>1</subtype>
-            <sigN>4</sigN>
-            <sigD>4</sigD>
+            <subtype>2</subtype>
+            <sigN>2</sigN>
+            <sigD>2</sigD>
             </TimeSig>
           <Rest>
-            <durationType>whole</durationType>
-            </Rest>
-          <Rest>
-            <durationType>quarter</durationType>
-            </Rest>
-          <Rest>
-            <durationType>eighth</durationType>
+            <durationType>measure</durationType>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -129,7 +112,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -137,7 +120,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -145,7 +128,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -153,7 +136,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -161,7 +144,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -169,7 +152,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -177,7 +160,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -185,7 +168,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -193,7 +176,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -201,7 +184,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -209,7 +192,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -217,7 +200,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -225,7 +208,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -233,7 +216,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -241,7 +224,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -249,7 +232,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -257,7 +240,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -265,7 +248,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -273,7 +256,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -281,7 +264,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -289,7 +272,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -297,7 +280,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -305,7 +288,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -313,7 +296,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -321,7 +304,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -329,7 +312,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -337,7 +320,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -345,7 +328,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -353,7 +336,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -361,7 +344,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
@@ -369,15 +352,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>4/4</duration>
-            </Rest>
-          </voice>
-        </Measure>
-      <Measure>
-        <voice>
-          <Rest>
-            <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <duration>2/2</duration>
             </Rest>
           </voice>
         </Measure>
