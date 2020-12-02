@@ -9,7 +9,7 @@ class ReadScore:
 
         self.lines = None
         self.tag_values = []
-        self.subtitle = None
+        self.subtitle = ''
         self.anacrusis = None
         self.key_sig = '0'
 

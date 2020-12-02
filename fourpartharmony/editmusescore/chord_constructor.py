@@ -98,12 +98,12 @@ class ChordConstructor:
             tenor_values = self._pitch_tpc_values(2)
             self.current_mc.tenor_pitch = tenor_values[0]
             self.current_mc.tenor_tpc = tenor_values[1]
-            self.current_mc.tenor_leading_note = alto_values[2]
+            self.current_mc.tenor_leading_note = tenor_values[2]
 
             bass_values = self._pitch_tpc_values(3)
             self.current_mc.bass_pitch = bass_values[0]
             self.current_mc.bass_tpc = bass_values[1]
-            self.current_mc.bass_leading_note = alto_values[2]
+            self.current_mc.bass_leading_note = bass_values[2]
 
             print(self.current_mc.chord)
             print(alto_values)

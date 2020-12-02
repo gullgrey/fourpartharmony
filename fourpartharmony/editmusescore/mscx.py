@@ -266,35 +266,25 @@ class Mscx:
     staff_start = """    <Staff id="{}">
 """
 
-    vbox_start = """      <VBox>
+    vbox = """      <VBox>
         <height>10</height>
-"""
-
-    title = """        <Text>
+        <Text>
           <style>Title</style>
           <text>{}</text>
           </Text>
-"""
-
-    subtitle = """        <Text>
+        <Text>
           <style>Subtitle</style>
           <text>{}</text>
           </Text>
-"""
-
-    composer = """        <Text>
+        <Text>
           <style>Composer</style>
           <text>{}</text>
           </Text>
-"""
-
-    lyricist = """        <Text>
+        <Text>
           <style>Lyricist</style>
           <text>{}</text>
           </Text>
-"""
-
-    vbox_end = """        </VBox>
+        </VBox>
 """
 
     anacrusis = """      <Measure len="{}">
@@ -304,6 +294,12 @@ class Mscx:
 
     measure_start = """      <Measure>
         <voice>
+"""
+
+    bass_clef = """          <Clef>
+            <concertClefType>F</concertClefType>
+            <transposingClefType>F</transposingClefType>
+            </Clef>
 """
 
     key_sig = """          <KeySig>
@@ -324,6 +320,15 @@ class Mscx:
             </TimeSig>
 """
 
+    # cannot be used as char \ueca5 can not be encoded into writen file.
+    tempo = """          <Tempo>
+            <tempo>2</tempo>
+            <followText>1</followText>
+            <text><b></b><font face="ScoreText"/><b><font face="FreeSerif"/> = 120
+</b></text>
+            </Tempo>
+"""
+
     harmony = """          <Harmony>
             <name>{}</name>
             </Harmony>
@@ -339,6 +344,15 @@ class Mscx:
 """
 
     note = """            <Note>
+              <pitch>{}</pitch>
+              <tpc>{}</tpc>
+              </Note>
+"""
+
+    note_accidental = """            <Note>
+              <Accidental>
+                <subtype>{}</subtype>
+                </Accidental>
               <pitch>{}</pitch>
               <tpc>{}</tpc>
               </Note>
