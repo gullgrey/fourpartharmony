@@ -3,7 +3,7 @@ from harmonise_exceptions import SopranoRangeError, HarmonisationError
 
 class Melody:
 
-    def __init__(self, soprano_list, key, **kwargs):
+    def __init__(self, soprano_list, key):
         """
 
         :param soprano_list:
@@ -18,7 +18,6 @@ class Melody:
                 6 --> B
             key[1] is a boolean. It represents whether the key is major (False) or minor (True).
             **NOTE: Whether the key is sharp, flat or natural is irrelevant to the operation of the harmonisation.
-        :param kwargs:
         """
         # Voice Ranges
         self.bass_lower = -11
@@ -56,6 +55,7 @@ class Melody:
         self.chord_notes = self.chord_construction()
 
     def soprano_list_check(self):
+
         for note in self.soprano_list:
             if self.soprano_lower <= note <= self.soprano_upper:
                 pass
@@ -64,13 +64,12 @@ class Melody:
 
     def chord_construction(self):
         scale = []
-        scale_length = 7
         scale_start = 0
 
         while scale_start < Interval.octave:
-            note = (self.tonic + scale_start) % scale_length
-            chord_third = (note + Interval.third) % scale_length
-            chord_fifth = (note + Interval.fifth) % scale_length
+            note = (self.tonic + scale_start) % Interval.octave
+            chord_third = (note + Interval.third) % Interval.octave
+            chord_fifth = (note + Interval.fifth) % Interval.octave
             triad = [note, chord_third, chord_fifth]
             scale.append(triad)
             scale_start += 1

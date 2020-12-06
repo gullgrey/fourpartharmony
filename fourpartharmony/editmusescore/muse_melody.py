@@ -12,6 +12,7 @@ class MuseMelody:
         self.key = [None, minor]
 
         self.soprano_list = []
+        self.transpose_up = []
 
         self._set_key()
         self._create_soprano_list()
@@ -28,7 +29,11 @@ class MuseMelody:
     def _create_soprano_list(self):
 
         c_double_flat = 70
+        b_double_sharp = 61
+        g_natural = 55
+
         g_note = 4
+        c_d_notes = [0, 1]
 
         for chord in self.measure_chords:
 
@@ -38,6 +43,12 @@ class MuseMelody:
             pitch = int(chord.soprano_pitch)
             if soprano_note <= g_note and pitch >= c_double_flat:
                 soprano_note = soprano_note + NoteConversions.scale_length
+
+            if ((pitch <= b_double_sharp and soprano_note not in c_d_notes) or
+                    pitch <= g_natural):
+                self.transpose_up.append(True)
+            else:
+                self.transpose_up.append(False)
 
             self.soprano_list.append(soprano_note)
 

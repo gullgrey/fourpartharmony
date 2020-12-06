@@ -88,8 +88,8 @@
           </Articulation>
         <Channel>
           <controller ctrl="0" value="0"/>
-          <controller ctrl="32" value="0"/>
-          <program value="0"/>
+          <controller ctrl="32" value="17"/>
+          <program value="52"/>
           <synti>Fluid</synti>
           </Channel>
         </Instrument>
@@ -140,8 +140,8 @@
           </Articulation>
         <Channel>
           <controller ctrl="0" value="0"/>
-          <controller ctrl="32" value="0"/>
-          <program value="0"/>
+          <controller ctrl="32" value="17"/>
+          <program value="52"/>
           <synti>Fluid</synti>
           </Channel>
         </Instrument>
@@ -194,8 +194,8 @@
           </Articulation>
         <Channel>
           <controller ctrl="0" value="0"/>
-          <controller ctrl="32" value="0"/>
-          <program value="0"/>
+          <controller ctrl="32" value="17"/>
+          <program value="52"/>
           <synti>Fluid</synti>
           </Channel>
         </Instrument>
@@ -248,8 +248,8 @@
           </Articulation>
         <Channel>
           <controller ctrl="0" value="0"/>
-          <controller ctrl="32" value="0"/>
-          <program value="0"/>
+          <controller ctrl="32" value="17"/>
+          <program value="52"/>
           <synti>Fluid</synti>
           </Channel>
         </Instrument>
@@ -264,7 +264,7 @@
           <Tempo>
             <tempo>2</tempo>
             <followText>1</followText>
-            <text><b></b><font face="ScoreText"/><b><font face="FreeSerif"/> = 120
+            <text><b></b><font face="ScoreText"></font><b><font face="FreeSerif"></font> = 120
 </b></text>
             </Tempo>
           <Rest>

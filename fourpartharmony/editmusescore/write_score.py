@@ -212,14 +212,14 @@ class WriteScore:
         tags = Mscx.meta_tags.format(*self.read_score.tag_values)
         self.file.write(tags)
 
-        self.file.write(Mscx.parts)
+        self.file.write(Mscx.four_piano_parts)
 
         self.file.write(Mscx.staff_start.format(soprano))
         self._vbox()
         self._measure_start()
         self._write_key_sig()
         self._write_time_sig()
-        # self.file.write(Mscx.tempo)
+        self.file.write(Mscx.tempo)
         self._write_staff('soprano')
 
         self.file.write(Mscx.staff_start.format(alto))

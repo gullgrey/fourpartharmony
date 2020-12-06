@@ -4,6 +4,7 @@ from chord import Chord
 from current_note import FirstNote, CurrentNote
 from harmonise_exceptions import HarmonisationError
 from tenor_note import TenorNote
+from melody import Interval
 
 
 class Harmony:
