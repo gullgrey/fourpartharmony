@@ -5,9 +5,11 @@ from measure_chord import MeasureRest
 
 class WriteScore:
 
-    def __init__(self, read_score):
+    def __init__(self, read_score, instrument):
 
         self.read_score = read_score
+        self.instrument = instrument
+        self.file_name = None
         self.file = None
 
         self.measure_length = read_score.time_sig_value
@@ -29,8 +31,8 @@ class WriteScore:
 
     def _open_file(self):
         file_type = ".mscx"
-        file_name = self.read_score.file_name[:-len(file_type)] + " Harmonised" + file_type
-        self.file = open(file_name, "w")
+        self.file_name = self.read_score.file_name[:-len(file_type)] + " Harmonised" + file_type
+        self.file = open(self.file_name, "w")
 
     def _set_anacrusis_length(self):
         if self.read_score.anacrusis is not None:
@@ -212,7 +214,11 @@ class WriteScore:
         tags = Mscx.meta_tags.format(*self.read_score.tag_values)
         self.file.write(tags)
 
-        self.file.write(Mscx.four_piano_parts)
+        if self.instrument == 'Piano':
+            self.file.write(Mscx.four_piano_parts)
+        # if instrument is Choir
+        else:
+            self.file.write(Mscx.four_choir_parts)
 
         self.file.write(Mscx.staff_start.format(soprano))
         self._vbox()

@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/fourpartharmony/harmonise" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/fourpartharmony/editmusescore" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/data" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/fourpartharmony/userinterface" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="inheritedJdk" />

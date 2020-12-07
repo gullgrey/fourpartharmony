@@ -151,5 +151,6 @@ class ThreePartHarmony:
             self._first_voice()
         elif self.melody_position == 'Staff 2':
             self._second_voice()
+        # if the melody position is Staff 3
         else:
             self._third_voice()

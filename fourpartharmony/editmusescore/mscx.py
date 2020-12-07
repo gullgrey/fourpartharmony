@@ -690,15 +690,15 @@ class Mscx:
       <Instrument>
         <longName>Voice 1</longName>
         <shortName>V1.</shortName>
-        <trackName>Piano</trackName>
-        <minPitchP>21</minPitchP>
-        <maxPitchP>108</maxPitchP>
-        <minPitchA>21</minPitchA>
-        <maxPitchA>108</maxPitchA>
-        <instrumentId>keyboard.piano</instrumentId>
+        <trackName>Women</trackName>
+        <minPitchP>55</minPitchP>
+        <maxPitchP>84</maxPitchP>
+        <minPitchA>55</minPitchA>
+        <maxPitchA>81</maxPitchA>
+        <instrumentId>voice.female</instrumentId>
         <Articulation>
           <velocity>100</velocity>
-          <gateTime>95</gateTime>
+          <gateTime>100</gateTime>
           </Articulation>
         <Articulation name="staccatissimo">
           <velocity>100</velocity>
@@ -736,8 +736,12 @@ class Mscx:
           <velocity>120</velocity>
           <gateTime>100</gateTime>
           </Articulation>
-        <Channel>
-          <controller ctrl="0" value="0"/>
+        <Channel name="Soprano">
+          <controller ctrl="32" value="17"/>
+          <program value="52"/>
+          <synti>Fluid</synti>
+          </Channel>
+        <Channel name="Alto">
           <controller ctrl="32" value="17"/>
           <program value="52"/>
           <synti>Fluid</synti>
@@ -754,16 +758,15 @@ class Mscx:
       <Instrument>
         <longName>Voice 2</longName>
         <shortName>V2.</shortName>
-        <trackName>Piano</trackName>
-        <minPitchP>21</minPitchP>
-        <maxPitchP>108</maxPitchP>
-        <minPitchA>21</minPitchA>
-        <maxPitchA>108</maxPitchA>
-        <instrumentId>keyboard.piano</instrumentId>
-        <clef staff="2">F</clef>
+        <trackName>Women</trackName>
+        <minPitchP>55</minPitchP>
+        <maxPitchP>84</maxPitchP>
+        <minPitchA>55</minPitchA>
+        <maxPitchA>81</maxPitchA>
+        <instrumentId>voice.female</instrumentId>
         <Articulation>
           <velocity>100</velocity>
-          <gateTime>95</gateTime>
+          <gateTime>100</gateTime>
           </Articulation>
         <Articulation name="staccatissimo">
           <velocity>100</velocity>
@@ -801,8 +804,12 @@ class Mscx:
           <velocity>120</velocity>
           <gateTime>100</gateTime>
           </Articulation>
-        <Channel>
-          <controller ctrl="0" value="0"/>
+        <Channel name="Soprano">
+          <controller ctrl="32" value="17"/>
+          <program value="52"/>
+          <synti>Fluid</synti>
+          </Channel>
+        <Channel name="Alto">
           <controller ctrl="32" value="17"/>
           <program value="52"/>
           <synti>Fluid</synti>
@@ -819,16 +826,15 @@ class Mscx:
       <Instrument>
         <longName>Voice 3</longName>
         <shortName>V3.</shortName>
-        <trackName>Piano</trackName>
-        <minPitchP>21</minPitchP>
-        <maxPitchP>108</maxPitchP>
-        <minPitchA>21</minPitchA>
-        <maxPitchA>108</maxPitchA>
-        <instrumentId>keyboard.piano</instrumentId>
-        <clef staff="2">F</clef>
+        <trackName>Women</trackName>
+        <minPitchP>55</minPitchP>
+        <maxPitchP>84</maxPitchP>
+        <minPitchA>55</minPitchA>
+        <maxPitchA>81</maxPitchA>
+        <instrumentId>voice.female</instrumentId>
         <Articulation>
           <velocity>100</velocity>
-          <gateTime>95</gateTime>
+          <gateTime>100</gateTime>
           </Articulation>
         <Articulation name="staccatissimo">
           <velocity>100</velocity>
@@ -866,8 +872,12 @@ class Mscx:
           <velocity>120</velocity>
           <gateTime>100</gateTime>
           </Articulation>
-        <Channel>
-          <controller ctrl="0" value="0"/>
+        <Channel name="Soprano">
+          <controller ctrl="32" value="17"/>
+          <program value="52"/>
+          <synti>Fluid</synti>
+          </Channel>
+        <Channel name="Alto">
           <controller ctrl="32" value="17"/>
           <program value="52"/>
           <synti>Fluid</synti>
