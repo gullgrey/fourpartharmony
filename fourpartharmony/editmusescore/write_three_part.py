@@ -28,6 +28,7 @@ class WriteThreePart(WriteScore):
         voice_2 = '2'
         voice_3 = '3'
 
+        # If the melody is in Staff 1
         voice_order = ['soprano', 'alto', 'tenor']
 
         if self.melody_position == 'Staff 2':

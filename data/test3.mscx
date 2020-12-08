@@ -103,8 +103,13 @@
             <sigD>2</sigD>
             </TimeSig>
           <Rest>
-            <durationType>measure</durationType>
-            <duration>2/2</duration>
+            <durationType>quarter</durationType>
+            </Rest>
+          <Rest>
+            <durationType>quarter</durationType>
+            </Rest>
+          <Rest>
+            <durationType>half</durationType>
             </Rest>
           </voice>
         </Measure>

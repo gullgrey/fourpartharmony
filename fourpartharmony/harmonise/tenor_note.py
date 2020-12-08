@@ -154,10 +154,6 @@ class TenorNote:
 
                 # self.potential_degrees.append(chord_root)
 
-        # print('Chord: '+self.chord)
-        # print('Soprano: '+str(self.soprano))
-        # print('Bass: '+str(self.bass))
-        # print('Potential Degrees: '+str(self.potential_degrees))
         self.potential_degrees.remove(abs_bass)
         if abs_soprano in self.potential_degrees:
             self.potential_degrees.remove(abs_soprano)

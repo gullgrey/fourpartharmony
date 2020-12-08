@@ -26,8 +26,6 @@ class Harmony:
 
     def create_harmony(self):
 
-        # check melody is "new"?
-
         furthest_note = 0
         max_prev_notes = 5
         new_progression_notes = []
@@ -66,8 +64,6 @@ class Harmony:
                     self._prev_next_tenor()
                 continue
 
-            # print('Chord: ', self.current_chord.nodes, self.melody.current_position)
-
             if self.current_bass is None:
                 self.current_bass = BassNote(self.current_note)
                 self.current_note.bass = self.current_bass
@@ -75,9 +71,6 @@ class Harmony:
             if self.current_bass.value is None:
                 self._next_chord()
                 continue
-
-            # print('Chord: ', self.current_chord.nodes, 'Bass: ',
-            #       self.current_bass.nodes, 'Position: ', self.melody.current_position)
 
             if self.current_tenor is None:
                 self.current_tenor = TenorNote(self.current_note)
@@ -94,9 +87,6 @@ class Harmony:
             if self.current_alto.value is None:
                 self._next_tenor()
                 continue
-
-            # print(self.current_note.soprano)
-            # self.current_note.print_notes()
 
             self.harmonised_notes.append(self.current_note)
             self.prev_note = self.current_note

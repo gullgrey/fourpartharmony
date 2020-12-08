@@ -51,4 +51,3 @@ class MuseMelody:
                 self.transpose_up.append(False)
 
             self.soprano_list.append(soprano_note)
-

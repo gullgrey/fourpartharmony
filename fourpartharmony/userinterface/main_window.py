@@ -8,6 +8,8 @@ from harmony import Harmony
 from three_part_harmony import ThreePartHarmony
 from chord_constructor import ChordConstructor
 from help_window import HelpWindow
+from error_window import ErrorWindow
+from harmonise_exceptions import EmptyMelodyError
 from os import startfile
 
 
@@ -45,10 +47,12 @@ class MainWindow:
                                           'Four Part Harmony', 'Three Part Harmony',
                                           command=self._show_melody_position)
 
-        self.position_label = None
+        self.position_label = tk.Label(self.option_frame,
+                                       text="Melody voice: ")
         self.position_value = tk.StringVar(self.option_frame)
         self.position_value.set('Top Voice')
-        self.position_option = None
+        self.position_option = tk.OptionMenu(self.option_frame, self.position_value,
+                                             'Top Voice', 'Middle Voice', 'Bottom Voice')
         self.position_padding = tk.Frame(self.option_frame)
 
         self.help_button = tk.Button(self.middle_frame, text='?', font=("Helvetica", 16),
@@ -81,18 +85,12 @@ class MainWindow:
     def _show_melody_position(self, value):
 
         if value == 'Three Part Harmony':
-            self.position_label = tk.Label(self.option_frame,
-                                           text="Melody voice: ")
-            self.position_option = tk.OptionMenu(self.option_frame, self.position_value,
-                                                 'Top Voice', 'Middle Voice', 'Bottom Voice')
-
             self.position_label.grid(column=0, row=4, sticky=tk.E)
             self.position_option.grid(column=1, row=4, sticky=tk.EW)
 
         else:
-            if self.position_label is not None:
-                self.position_label.destroy()
-                self.position_option.destroy()
+            self.position_label.grid_forget()
+            self.position_option.grid_forget()
 
     def _instruction_window(self):
         self.help_window = tk.Toplevel(self.master)
@@ -112,6 +110,12 @@ class MainWindow:
             melody_position = 'Staff 3'
         return melody_position
 
+    def _create_error_window(self, file, error_type):
+        self.error_window = tk.Toplevel(self.master)
+        ErrorWindow(self.error_window, file, error_type)
+        self.error_window.focus_set()
+        self.error_window.grab_set()
+
     def _harmonise_file(self):
 
         file = self.file_entry.get()
@@ -127,9 +131,20 @@ class MainWindow:
         if major_minor == 'Minor':
             is_minor = True
 
-        score = ReadScore(file)
+        try:
+            score = ReadScore(file)
+        except (FileNotFoundError, PermissionError):
+            self._create_error_window(file, 'FileNotFound')
+            return
+
         muse_melody = MuseMelody(is_minor, score.key_sig, score.measure_chords)
-        melody = Melody(muse_melody.soprano_list, muse_melody.key)
+
+        try:
+            melody = Melody(muse_melody.soprano_list, muse_melody.key)
+        except EmptyMelodyError:
+            self._create_error_window(file, 'EmptyMelody')
+            return
+
         harmony = Harmony(melody)
 
         if three_part == 'Three Part Harmony':
@@ -144,13 +159,3 @@ class MainWindow:
 
         startfile(write_score.file_name)
         self.master.destroy()
-
-
-def main():
-    root = tk.Tk()
-    MainWindow(root)
-    root.mainloop()
-
-
-if __name__ == '__main__':
-    main()

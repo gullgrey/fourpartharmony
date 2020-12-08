@@ -943,11 +943,10 @@ class Mscx:
             </TimeSig>
 """
 
-    # cannot be used as char \ueca5 can not be encoded into writen file.
     tempo = """          <Tempo>
-            <tempo>2</tempo>
+            <tempo>1.5</tempo>
             <followText>1</followText>
-            <text><sym>metNoteQuarterUp</sym> = 120</text>
+            <text><sym>metNoteQuarterUp</sym> = 90</text>
             </Tempo>
 """
 
@@ -1004,8 +1003,3 @@ class Mscx:
     end = """    </Score>
   </museScore>
 """
-
-
-
-
-

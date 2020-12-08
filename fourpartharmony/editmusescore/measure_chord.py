@@ -57,6 +57,3 @@ class MeasureChord(MeasureRest):
         self.bass_pitch = None
         self.bass_tpc = None
         self.bass_leading_note = False
-
-
-

@@ -104,8 +104,3 @@ class ChordConstructor:
             self.current_mc.bass_pitch = bass_values[0]
             self.current_mc.bass_tpc = bass_values[1]
             self.current_mc.bass_leading_note = bass_values[2]
-
-            # print(self.current_mc.chord)
-            # print(alto_values)
-            # print(tenor_values)
-            # print(bass_values)

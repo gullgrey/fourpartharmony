@@ -253,26 +253,3 @@ class AltoNote:
             self.value = self.nodes[0]
         else:
             self.value = None
-
-
-# class AltoNote:
-#
-#     def __init__(self, current_note):
-#
-#         self.soprano = current_note.soprano
-#         self.tenor = current_note.tenor.value
-#         if self.soprano > self.tenor:
-#             self.value_list = list(range(0, 4))
-#         else:
-#             self.value_list = []
-#         shuffle(self.value_list)
-#         self.nodes = []
-#         self.value = self.value_list[0]
-#
-#     def next_node(self):
-#         if len(self.value_list) > 0:
-#             self.value_list.pop(0)
-#         if len(self.value_list) > 0:
-#             self.value = self.value_list[0]
-#         else:
-#             self.value = None

@@ -31,7 +31,8 @@ class WriteScore:
 
     def _open_file(self):
         file_type = ".mscx"
-        self.file_name = self.read_score.file_name[:-len(file_type)] + " Harmonised" + file_type
+        file_end = " Harmonised"
+        self.file_name = self.read_score.file_name[:-len(file_type)] + file_end + file_type
         self.file = open(self.file_name, "w")
 
     def _set_anacrusis_length(self):

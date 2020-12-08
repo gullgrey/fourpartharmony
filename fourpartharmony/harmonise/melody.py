@@ -1,4 +1,4 @@
-from harmonise_exceptions import SopranoRangeError, HarmonisationError
+from harmonise_exceptions import SopranoRangeError, HarmonisationError, EmptyMelodyError
 
 
 class Melody:
@@ -55,6 +55,9 @@ class Melody:
         self.chord_notes = self.chord_construction()
 
     def soprano_list_check(self):
+
+        if len(self.soprano_list) == 0:
+            raise EmptyMelodyError('Melody contains no notes.')
 
         for note in self.soprano_list:
             if self.soprano_lower <= note <= self.soprano_upper:
