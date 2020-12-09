@@ -27,10 +27,15 @@ class MeasureRest:
             self.note_length = durations_dict[self.duration]
 
         dot_num = int(self.dots)
+        current_length = self.note_length
+        dot_lengths = [current_length]
         while dot_num > 0:
-            dot_modifier = 1.5
-            self.note_length = self.note_length * dot_modifier
+            dot_modifier = 0.5
+            current_length = current_length * dot_modifier
+            dot_lengths.append(current_length)
             dot_num -= 1
+
+        self.note_length = sum(dot_lengths)
 
 
 class MeasureChord(MeasureRest):

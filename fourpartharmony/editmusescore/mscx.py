@@ -956,7 +956,12 @@ class Mscx:
 """
 
     chord_start = """          <Chord>
-            <durationType>{}</durationType>
+"""
+
+    dots = """            <dots>{}</dots>
+"""
+
+    duration_start = """            <durationType>{}</durationType>
 """
 
     lyric = """            <Lyrics>
@@ -983,6 +988,12 @@ class Mscx:
 """
 
     rest = """          <Rest>
+            <durationType>{}</durationType>
+            </Rest>
+"""
+
+    rest_dots = """          <Rest>
+            <dots>{}</dots>
             <durationType>{}</durationType>
             </Rest>
 """

@@ -88,14 +88,25 @@ class WriteScore:
             time_sig_string = (self.read_score.time_sig_numerator +
                                '/' + self.read_score.time_sig_denominator)
             rest_lines = Mscx.measure_rest.format(time_sig_string)
+
         else:
-            rest_lines = Mscx.rest.format(note.duration)
+            if note.dots == '0':
+                rest_lines = Mscx.rest.format(note.duration)
+            else:
+                rest_lines = Mscx.rest_dots.format(note.dots, note.duration)
+
         self.file.write(rest_lines)
 
     def _chord_lyric_start(self, note):
 
-        chord_start = Mscx.chord_start.format(note.duration)
-        self.file.write(chord_start)
+        self.file.write(Mscx.chord_start)
+
+        if note.dots != '0':
+            dots = Mscx.dots.format(note.dots)
+            self.file.write(dots)
+
+        duration_start = Mscx.duration_start.format(note.duration)
+        self.file.write(duration_start)
 
         if note.lyric is not None:
             lyric_lines = Mscx.lyric.format(note.lyric)

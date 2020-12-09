@@ -11,6 +11,8 @@ from help_window import HelpWindow
 from error_window import ErrorWindow
 from harmonise_exceptions import EmptyMelodyError
 from os import startfile
+from sys import platform
+from subprocess import call as sub_call
 
 
 class MainWindow:
@@ -19,6 +21,8 @@ class MainWindow:
 
         self.master = master
         self.master.title('Melody Harmoniser')
+
+        self.write_score = None
 
         self.middle_frame = tk.Frame(self.master)
         self.option_frame = tk.Frame(self.middle_frame)
@@ -116,6 +120,13 @@ class MainWindow:
         self.error_window.focus_set()
         self.error_window.grab_set()
 
+    def _open_muse(self):
+        if platform == "win32":
+            startfile(self.write_score.file_name)
+        else:
+            opener = "open" if platform == "darwin" else "xdg-open"
+            sub_call([opener, self.write_score.file_name])
+
     def _harmonise_file(self):
 
         file = self.file_entry.get()
@@ -133,7 +144,7 @@ class MainWindow:
 
         try:
             score = ReadScore(file)
-        except (FileNotFoundError, PermissionError):
+        except (FileNotFoundError, PermissionError, TypeError):
             self._create_error_window(file, 'FileNotFound')
             return
 
@@ -151,11 +162,11 @@ class MainWindow:
             melody_position = self._get_melody_position()
             ThreePartHarmony(harmony, melody_position, muse_melody.transpose_up)
             ChordConstructor(score, harmony)
-            write_score = WriteThreePart(score, instrument, melody_position)
+            self.write_score = WriteThreePart(score, instrument, melody_position)
         # if harmonisation is Four-Part Harmony
         else:
             ChordConstructor(score, harmony)
-            write_score = WriteScore(score, instrument)
+            self.write_score = WriteScore(score, instrument)
 
-        startfile(write_score.file_name)
+        self._open_muse()
         self.master.destroy()
