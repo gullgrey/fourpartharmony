@@ -5,8 +5,7 @@ class ErrorWindow:
 
     def __init__(self, master, file, error_type):
 
-        self.error_message = None
-        self._set_error_message(error_type)
+        self.error_message = self.set_error_message(error_type)
 
         self.master = master
         self.file = file
@@ -26,12 +25,14 @@ class ErrorWindow:
         self.file_error_body.pack()
         self.ok_button.pack(pady=10, ipadx=20)
 
-    def _set_error_message(self, error_type):
+    @staticmethod
+    def set_error_message(error_type):
 
         if error_type == 'FileNotFound':
-            self.error_message = """The file "{}" cannot be found in this directory. 
+            error_message = """The file "{}" cannot be found in this directory. 
 Make sure the file name is spelled correctly and has been
 saved as an Uncompressed MuseScore 3 File (.mscx)."""
         # The error type is EmptyMelody
         else:
-            self.error_message = """Harmony cannot be created. The file "{}" has no notes on the top staff."""
+            error_message = """Harmony cannot be created. The file "{}" has no notes on the top staff."""
+        return error_message
