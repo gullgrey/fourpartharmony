@@ -1,3 +1,5 @@
+from note_conversions import NoteConversions
+
 
 class MeasureRest:
 
@@ -8,23 +10,14 @@ class MeasureRest:
 
         self.note_length = None
 
-    def set_note_length(self, time_sig):
+        self.tuplet = None
 
-        durations_dict = {
-            'whole': 1,
-            'half': 0.5,
-            'quarter': 0.25,
-            'eighth': 0.125,
-            '16th': 0.0625,
-            '32nd': 0.03125,
-            '64th': 0.015625,
-            '128th': 0.0078125
-        }
+    def set_note_length(self, time_sig):
 
         if self.duration == 'measure':
             self.note_length = time_sig
         else:
-            self.note_length = durations_dict[self.duration]
+            self.note_length = NoteConversions.durations[self.duration]
 
         dot_num = int(self.dots)
         current_length = self.note_length
@@ -44,7 +37,16 @@ class MeasureChord(MeasureRest):
 
         super().__init__()
         self.lyric = None
+        self.articulation = None
         self.accidental = None
+
+        self.tie_start = False
+        self.tie_start_measures = None
+        self.tie_start_fractions = None
+
+        self.tie_end = False
+        self.tie_end_measures = None
+        self.tie_end_fractions = None
 
         self.soprano_pitch = None
         self.soprano_tpc = None
@@ -62,3 +64,21 @@ class MeasureChord(MeasureRest):
         self.bass_pitch = None
         self.bass_tpc = None
         self.bass_leading_note = False
+
+
+class Tuplet:
+
+    def __init__(self):
+
+        self.normal_notes = None
+        self.actual_notes = None
+        self.base_note = None
+
+        self.normal_length = None
+        self.actual_length = None
+
+    def set_tuplet_length(self):
+
+        base_length = NoteConversions.durations[self.base_note]
+        self.normal_length = int(self.normal_notes) * base_length
+        self.actual_length = int(self.actual_notes) * base_length

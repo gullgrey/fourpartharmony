@@ -955,6 +955,17 @@ class Mscx:
             </Harmony>
 """
 
+    tuplet = """          <Tuplet>
+            <normalNotes>{}</normalNotes>
+            <actualNotes>{}</actualNotes>
+            <baseNote>{}</baseNote>
+            <Number>
+              <style>Tuplet</style>
+              <text>{}</text>
+              </Number>
+            </Tuplet>
+"""
+
     chord_start = """          <Chord>
 """
 
@@ -969,17 +980,48 @@ class Mscx:
               </Lyrics>
 """
 
-    note = """            <Note>
-              <pitch>{}</pitch>
-              <tpc>{}</tpc>
-              </Note>
+    articulation = """            <Articulation>
+              <subtype>{}</subtype>
+              </Articulation>
 """
 
-    note_accidental = """            <Note>
-              <Accidental>
+    note_start = """            <Note>
+"""
+
+    note_accidental = """              <Accidental>
                 <subtype>{}</subtype>
                 </Accidental>
-              <pitch>{}</pitch>
+"""
+
+    tie_next_start = """              <Spanner type="Tie">
+                <Tie>
+                  </Tie>
+                <next>
+                  <location>
+"""
+
+    tie_next_end = """                    </location>
+                  </next>
+                </Spanner>
+"""
+
+    tie_prev_start = """              <Spanner type="Tie">
+                <prev>
+                  <location>
+"""
+
+    tie_prev_end = """                    </location>
+                  </prev>
+                </Spanner>
+"""
+
+    tie_measures = """                    <measures>{}</measures>
+"""
+
+    tie_fractions = """                    <fractions>{}</fractions>
+"""
+
+    note = """              <pitch>{}</pitch>
               <tpc>{}</tpc>
               </Note>
 """
@@ -1002,6 +1044,9 @@ class Mscx:
             <durationType>measure</durationType>
             <duration>{}</duration>
             </Rest>
+"""
+
+    tuplet_end = """          <endTuplet/>
 """
 
     measure_end = """          </voice>

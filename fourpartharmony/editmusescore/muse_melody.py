@@ -37,6 +37,9 @@ class MuseMelody:
 
         for chord in self.measure_chords:
 
+            if chord.tie_end:
+                continue
+
             tpc_natural = (int(chord.soprano_tpc) + 1) % NoteConversions.scale_length
             soprano_note = NoteConversions.tpc_to_scale[tpc_natural]
 

@@ -84,11 +84,17 @@ class ChordConstructor:
 
     def _construct_chords(self):
 
-        for position in range(len(self.measure_chords)):
-            self.current_values = self.harmonised_notes[position].get_harmonies()
-            self.current_mc = self.measure_chords[position]
+        tie_end_counter = 0
 
-            self.current_mc.chord = self.current_values[0]
+        for position in range(len(self.measure_chords)):
+            self.current_mc = self.measure_chords[position]
+            if self.current_mc.tie_end is False:
+                harmony_position = position + tie_end_counter
+                self.current_values = self.harmonised_notes[harmony_position].get_harmonies()
+                self.current_mc.chord = self.current_values[0]
+            else:
+                self.current_mc.chord = ''
+                tie_end_counter -= 1
 
             alto_values = self._pitch_tpc_values(1)
             self.current_mc.alto_pitch = alto_values[0]

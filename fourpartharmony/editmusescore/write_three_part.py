@@ -8,19 +8,18 @@ class WriteThreePart(WriteScore):
         self.melody_position = melody_position
         super().__init__(read_score, instrument)
 
-    def _write_soprano(self, note):
+    def _get_soprano_values(self):
 
-        self._chord_lyric_start(note)
+        accidental_lines = None
 
-        note_values = [note.soprano_pitch, note.soprano_tpc]
-        if note.accidental is None:
-            note_lines = Mscx.note.format(*note_values)
-        else:
-            note_lines = Mscx.note_accidental.format(note.accidental,
-                                                     *note_values)
+        self._chord_values_start()
 
-        self.file.write(note_lines)
-        self.file.write(Mscx.chord_end)
+        note_values = [self.current_note.soprano_pitch, self.current_note.soprano_tpc]
+        if self.current_note.accidental is not None:
+            accidental_lines = Mscx.note_accidental.format(self.current_note.accidental)
+        note_lines = Mscx.note.format(*note_values)
+
+        self._write_voices(accidental_lines, note_lines)
 
     def _write_lines(self):
 

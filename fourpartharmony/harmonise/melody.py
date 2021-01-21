@@ -244,4 +244,3 @@ class Interval:
             letter_value = 67
 
         return chr(letter_value + abs_note)
-

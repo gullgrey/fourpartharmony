@@ -3,6 +3,19 @@ class NoteConversions:
 
     scale_length = 7
 
+    # converts a note duration to a numerical value, assuming a whole note equals 1.
+    durations = {
+        'whole': 1,
+        'half': 0.5,
+        'quarter': 0.25,
+        'eighth': 0.125,
+        '16th': 0.0625,
+        '32nd': 0.03125,
+        '64th': 0.015625,
+        '128th': 0.0078125,
+        '256th': 0.00390625
+    }
+
     # converts a key signature accidental value to the natural of the major scale.
     major_keys = {
         '-7': 'C',
